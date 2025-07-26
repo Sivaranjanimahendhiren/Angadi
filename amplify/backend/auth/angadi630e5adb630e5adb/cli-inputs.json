@@ -1,0 +1,85 @@
+{
+  "version": "1",
+  "cognitoConfig": {
+    "identityPoolName": "angadi630e5adb_identitypool_630e5adb",
+    "allowUnauthenticatedIdentities": false,
+    "resourceNameTruncated": "angadi630e5adb",
+    "userPoolName": "angadi630e5adb_userpool_630e5adb",
+    "autoVerifiedAttributes": [
+      "phone_number"
+    ],
+    "mfaConfiguration": "OPTIONAL",
+    "mfaTypes": [
+      "SMS Text Message"
+    ],
+    "smsAuthenticationMessage": "Your authentication code is {####}",
+    "smsVerificationMessage": "Your verification code is {####}",
+    "emailVerificationSubject": "Your verification code",
+    "emailVerificationMessage": "Your verification code is {####}",
+    "defaultPasswordPolicy": false,
+    "passwordPolicyMinLength": 8,
+    "passwordPolicyCharacters": [],
+    "requiredAttributes": [
+      "address",
+      "birthdate",
+      "email",
+      "gender",
+      "name",
+      "phone_number"
+    ],
+    "aliasAttributes": [],
+    "userpoolClientGenerateSecret": false,
+    "userpoolClientRefreshTokenValidity": "60",
+    "userpoolClientWriteAttributes": [
+      "picture",
+      "address",
+      "birthdate",
+      "email",
+      "gender",
+      "name",
+      "phone_number"
+    ],
+    "userpoolClientReadAttributes": [
+      "address",
+      "birthdate",
+      "email",
+      "gender",
+      "name",
+      "phone_number",
+      "picture",
+      "email_verified",
+      "phone_number_verified"
+    ],
+    "userpoolClientLambdaRole": "angadi630e5adb_userpoolclient_lambda_role",
+    "userpoolClientSetAttributes": true,
+    "sharedId": "630e5adb",
+    "resourceName": "angadi630e5adb630e5adb",
+    "authSelections": "identityPoolAndUserPool",
+    "useDefault": "manual",
+    "thirdPartyAuth": false,
+    "usernameAttributes": [
+      "phone_number"
+    ],
+    "userPoolGroups": false,
+    "adminQueries": false,
+    "triggers": {
+      "DefineAuthChallenge": [
+        "captcha-define-challenge"
+      ],
+      "CreateAuthChallenge": [
+        "captcha-create-challenge"
+      ],
+      "VerifyAuthChallengeResponse": [
+        "captcha-verify"
+      ],
+      "PostConfirmation": [
+        "add-to-group"
+      ]
+    },
+    "hostedUI": false,
+    "userPoolGroupList": [],
+    "serviceName": "Cognito",
+    "usernameCaseSensitive": false,
+    "useEnabledMfas": true
+  }
+}

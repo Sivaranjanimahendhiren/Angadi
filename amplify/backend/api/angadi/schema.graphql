@@ -1,0 +1,116 @@
+type Product @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  name: String!
+  description: String
+  price: Float!
+  image: String
+  discount: Float
+  category: String
+  stock: Int
+
+  reviews: [Review] @hasMany(indexName: "byProduct", fields: ["id"])
+  cartItems: [CartItem] @hasMany(indexName: "byProduct", fields: ["id"])
+  wishlistItems: [WishlistItem] @hasMany(indexName: "byProduct", fields: ["id"])
+  bids: [Bid] @hasMany(indexName: "byProduct", fields: ["id"])
+  orderItems: [OrderItem] @hasMany(indexName: "byProduct", fields: ["id"])
+  posts: [Post] @hasMany(indexName: "byProduct", fields: ["id"])
+}
+
+type Review @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  productID: ID! @index(name: "byProduct")
+  rating: Int!
+  comment: String
+  product: Product @belongsTo(fields: ["productID"])
+}
+
+type CartItem @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  userId: String! @index(name: "byUser")
+  productId: ID! @index(name: "byProduct")
+  quantity: Int!
+  addedAt: AWSDateTime
+  product: Product @belongsTo(fields: ["productId"])
+}
+
+type WishlistItem @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  userId: String! @index(name: "wishlistByUser")
+  productId: ID! @index(name: "byProduct")
+  addedAt: AWSDateTime
+  product: Product @belongsTo(fields: ["productId"])
+}
+
+type Order @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  userId: String! @index(name: "ordersByUser")
+  totalPrice: Float!
+  status: String!
+  items: [OrderItem] @hasMany(indexName: "byOrder", fields: ["id"])
+}
+
+type OrderItem @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  orderId: ID! @index(name: "byOrder")
+  productId: ID! @index(name: "byProduct")
+  name: String!
+  image: String
+  price: Float!
+  quantity: Int!
+  order: Order @belongsTo(fields: ["orderId"])
+  product: Product @belongsTo(fields: ["productId"])
+}
+
+type Bid @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  productId: ID! @index(name: "byProduct")
+  userId: String!
+  amount: Float!
+  status: String! # set "Pending" from frontend
+  product: Product @belongsTo(fields: ["productId"])
+}
+
+type Blog @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  userId: String!
+  title: String!
+  posts: [Post] @hasMany(indexName: "byBlog", fields: ["id"])
+}
+
+type Post @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  blogID: ID! @index(name: "byBlog")
+  productId: ID @index(name: "byProduct")
+  title: String!
+  content: String!
+  image: String
+  blog: Blog @belongsTo(fields: ["blogID"])
+  product: Product @belongsTo(fields: ["productId"])
+  comments: [Comment] @hasMany(indexName: "byPost", fields: ["id"])
+  likes: [Like] @hasMany(indexName: "byPost", fields: ["id"])
+  shares: [Share] @hasMany(indexName: "byPost", fields: ["id"])
+}
+
+type Comment @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  postID: ID! @index(name: "byPost")
+  userId: String!
+  content: String!
+  post: Post @belongsTo(fields: ["postID"])
+}
+
+type Like @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  postID: ID! @index(name: "byPost")
+  userId: String!
+  post: Post @belongsTo(fields: ["postID"])
+}
+
+type Share @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  postID: ID! @index(name: "byPost")
+  userId: String!
+  platform: String
+  sharedAt: AWSDateTime
+  post: Post @belongsTo(fields: ["postID"])
+}

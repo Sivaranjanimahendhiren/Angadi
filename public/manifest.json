@@ -1,0 +1,39 @@
+{
+  "short_name": "Angadi",
+  "name": "Angadi - Your Online Shopping App",
+  "description": "Shop the latest trends and essentials at unbeatable prices with Angadi.",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo1024.png",
+      "type": "image/png",
+      "sizes": "1024x1024",
+      "purpose": "any"
+    }
+  ],
+  "start_url": "/?source=pwa",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ff7f50",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "prefer_related_applications": false,
+  "related_applications": []
+}

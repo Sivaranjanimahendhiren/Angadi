@@ -1,0 +1,194 @@
+{
+  "api": {
+    "angadi": {
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [],
+          "defaultAuthentication": {
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 7
+            },
+            "authenticationType": "API_KEY"
+          }
+        }
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync"
+    }
+  },
+  "auth": {
+    "angadi630e5adb630e5adb": {
+      "customAuth": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "angadi630e5adb630e5adbDefineAuthChallenge",
+          "triggerProvider": "Cognito"
+        },
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "angadi630e5adb630e5adbCreateAuthChallenge",
+          "triggerProvider": "Cognito"
+        },
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "angadi630e5adb630e5adbVerifyAuthChallengeResponse",
+          "triggerProvider": "Cognito"
+        },
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "angadi630e5adb630e5adbPostConfirmation",
+          "triggerProvider": "Cognito"
+        }
+      ],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OPTIONAL",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "ADDRESS",
+          "BIRTHDATE",
+          "EMAIL",
+          "GENDER",
+          "NAME",
+          "PHONE_NUMBER"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [
+          "PHONE_NUMBER"
+        ],
+        "verificationMechanisms": [
+          "PHONE_NUMBER"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
+    }
+  },
+  "function": {
+    "angadi630e5adb630e5adbCreateAuthChallenge": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "angadi630e5adb630e5adbDefineAuthChallenge": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "angadi630e5adb630e5adbPostConfirmation": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "angadi630e5adb630e5adbVerifyAuthChallengeResponse": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_angadi630e5adb630e5adbCreateAuthChallenge_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "angadi630e5adb630e5adbCreateAuthChallenge"
+        }
+      ]
+    },
+    "AMPLIFY_function_angadi630e5adb630e5adbCreateAuthChallenge_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "angadi630e5adb630e5adbCreateAuthChallenge"
+        }
+      ]
+    },
+    "AMPLIFY_function_angadi630e5adb630e5adbDefineAuthChallenge_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "angadi630e5adb630e5adbDefineAuthChallenge"
+        }
+      ]
+    },
+    "AMPLIFY_function_angadi630e5adb630e5adbDefineAuthChallenge_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "angadi630e5adb630e5adbDefineAuthChallenge"
+        }
+      ]
+    },
+    "AMPLIFY_function_angadi630e5adb630e5adbPostConfirmation_GROUP": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "angadi630e5adb630e5adbPostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_angadi630e5adb630e5adbPostConfirmation_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "angadi630e5adb630e5adbPostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_angadi630e5adb630e5adbPostConfirmation_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "angadi630e5adb630e5adbPostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_angadi630e5adb630e5adbVerifyAuthChallengeResponse_RECAPTCHASECRET": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "angadi630e5adb630e5adbVerifyAuthChallengeResponse"
+        }
+      ]
+    },
+    "AMPLIFY_function_angadi630e5adb630e5adbVerifyAuthChallengeResponse_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "angadi630e5adb630e5adbVerifyAuthChallengeResponse"
+        }
+      ]
+    },
+    "AMPLIFY_function_angadi630e5adb630e5adbVerifyAuthChallengeResponse_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "angadi630e5adb630e5adbVerifyAuthChallengeResponse"
+        }
+      ]
+    }
+  }
+}
